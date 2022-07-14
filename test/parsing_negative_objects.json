@@ -248,6 +248,54 @@
             "https://service.org/login"
         ]
     },
+     "invalid ISO 8601 issuedAt": {
+        "domain": "service.org",
+        "address": "0xe5A12547fe4E872D192E3eCecb76F2Ce1aeA4946",
+        "statement": "I accept the ServiceOrg Terms of Service: https://service.org/tos",
+        "uri": "https://service.org/login",
+        "version": "1",
+        "chainId": 1,
+        "nonce": "12341234",
+        "issuedAt": "2020-02-32T00:00:00.000Z",
+        "expirationTime": "2023-03-17T12:45:13.610Z",
+        "notBefore": "2022-03-17T12:45:13.610Z",
+        "requestId": "some_id",
+        "resources": [
+            "https://service.org/login"
+        ]
+    },
+    "invalid ISO 8601 expirationTime": {
+        "domain": "service.org",
+        "address": "0xe5A12547fe4E872D192E3eCecb76F2Ce1aeA4946",
+        "statement": "I accept the ServiceOrg Terms of Service: https://service.org/tos",
+        "uri": "https://service.org/login",
+        "version": "1",
+        "chainId": 1,
+        "nonce": "12341234",
+        "issuedAt": "2022-03-17T12:45:13.610Z",
+        "expirationTime": "2020-02-32T00:00:00.000Z",
+        "notBefore": "2022-03-17T12:45:13.610Z",
+        "requestId": "some_id",
+        "resources": [
+            "https://service.org/login"
+        ]
+    },
+    "invalid ISO 8601 notBefore": {
+        "domain": "service.org",
+        "address": "0xe5A12547fe4E872D192E3eCecb76F2Ce1aeA4946",
+        "statement": "I accept the ServiceOrg Terms of Service: https://service.org/tos",
+        "uri": "https://service.org/login",
+        "version": "1",
+        "chainId": 1,
+        "nonce": "12341234",
+        "issuedAt": "2022-03-17T12:45:13.610Z",
+        "expirationTime": "2023-03-17T12:45:13.610Z",
+        "notBefore": "2020-02-32T00:00:00.000Z",
+        "requestId": "some_id",
+        "resources": [
+            "https://service.org/login"
+        ]
+    },
     "first resource not-RFC 3986": {
         "domain": "service.org",
         "address": "0xe5A12547fe4E872D192E3eCecb76F2Ce1aeA4946",
