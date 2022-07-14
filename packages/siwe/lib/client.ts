@@ -1,6 +1,6 @@
 // TODO: Figure out how to get types from this lib:
 import {
-	isEIP55Address, ParsedMessage, ParsedMessageRegExp
+	isEIP55Address, validateTimeProps, ParsedMessage, ParsedMessageRegExp
 } from "@spruceid/siwe-parser";
 import { providers, utils } from "ethers";
 import * as uri from "valid-url";
@@ -378,27 +378,7 @@ export class SiweMessage {
 			);
 		}
 
-		const ISO8601 =
-			/([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\.[0-9]+)?(([Zz])|([+|\-]([01][0-9]|2[0-3]):[0-5][0-9]))/;
-		/** `issuedAt` conforms to ISO-8601 */
-		if (this.issuedAt) {
-			if (!ISO8601.test(this.issuedAt)) {
-				throw new Error(SiweErrorType.INVALID_TIME_FORMAT);
-			}
-		}
-
-		/** `expirationTime` conforms to ISO-8601 */
-		if (this.expirationTime) {
-			if (!ISO8601.test(this.expirationTime)) {
-				throw new Error(SiweErrorType.INVALID_TIME_FORMAT);
-			}
-		}
-
-		/** `notBefore` conforms to ISO-8601 */
-		if (this.notBefore) {
-			if (!ISO8601.test(this.notBefore)) {
-				throw new Error(SiweErrorType.INVALID_TIME_FORMAT);
-			}
-		}
+		/** `issuedAt`, `expirationTime` and `notBefore` conform to ISO-8601 */
+		validateTimeProps(this, SiweErrorType.INVALID_TIME_FORMAT);
 	}
 }
