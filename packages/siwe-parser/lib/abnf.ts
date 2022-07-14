@@ -1,6 +1,6 @@
 import apgApi from "apg-js/src/apg-api/api";
 import apgLib from "apg-js/src/apg-lib/node-exports";
-import { isEIP55Address } from "./utils";
+import { isEIP55Address, validateTimeProps } from "./utils";
 
 const GRAMMAR = `
 sign-in-with-ethereum =
@@ -342,5 +342,7 @@ export class ParsedMessage {
 		if (!isEIP55Address(this.address)) {
 			throw new Error("Address not conformant to EIP-55.");
 		}
+		
+		validateTimeProps(this);
 	}
 }
